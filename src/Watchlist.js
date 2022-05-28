@@ -1,44 +1,45 @@
 import React, { useContext } from 'react'
-import { LOCAL_STORAGE_KEY } from './App'
-import { SavedMoviesContext } from './App'
+import { LOCAL_STORAGE_KEY, SavedMoviesContext } from './App'
 import Movie from './Movie'
-import SavedMovieDisplay from './SavedMovieDisplay'
 import Header from './Header'
+
+import { FontAwesomeIcon, faCircleMinus } from './App'
 
 function Watchlist() {
 
   const [savedMovies, setSavedMovies] = useContext(SavedMoviesContext)
 
-  function remove(id) {
-    let tempArr = savedMovies;
-    tempArr = tempArr.filter(e => e.imdbID != id)
-    console.log("tempArr: ", tempArr)
-    setSavedMovies(tempArr)
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedMovies))
+  const remove = movieData => {
+    let newMovies = savedMovies;
+    newMovies = newMovies.filter(movie => movie.imdbID != movieData.imdbID)
+    setSavedMovies(newMovies)
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newMovies))
   }
 
-  if (savedMovies.length == 0) {
-    return (
-      <div>
-        <p>Your Watchlist is looking a little empty</p>
-        <p>Add some movies</p>
-      </div>
-    )
-  }
+  const emptyWatchlistPage = 
+    <div className='empty-watchlist-page'>
+      <p>Your Watchlist is looking a little empty...</p>
+      <br></br>
+      <p>Add some movies in the search page</p>
+    </div>
 
   return (
     <div>
-      <Header link="/" text="Search for movies"/>
-      {savedMovies.map(movie => {
-        return (
-          <SavedMovieDisplay
-            key={movie.imdbID}
-            Poster={movie.Poster}
-            Title={Movie.Title}
-            remove={() => remove(movie.imdbID)}
-          />
-        )
-      })}
+      <Header title="My Watchlist" link="/" text="Search for movies"/>
+      <main>
+        {savedMovies.length == 0 && emptyWatchlistPage}
+        {savedMovies.map(movie => {
+          return (
+            <Movie
+              key={movie.imdbID}
+              id={movie.imdbID}
+              action={remove}
+              actionText="Remove"
+              symbol = {<FontAwesomeIcon className='button-symbol' icon={faCircleMinus} />}
+            />
+          )
+        })}
+      </main>
     </div>
   )
 }

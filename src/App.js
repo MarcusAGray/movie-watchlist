@@ -1,14 +1,15 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
+import './index.css';
 import Home from './Home'
 import Watchlist from './Watchlist'
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilm, faMagnifyingGlass, faStar, faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 
-//lol
 export const SavedMoviesContext = createContext();
 const LOCAL_STORAGE_KEY = 'savedMovies'
 
@@ -26,7 +27,7 @@ function App() {
 
   return(
     <Router>
-      <div>
+      <div className='container'>
         <SavedMoviesContext.Provider value={[savedMovies, setSavedMovies]}>
           <Routes>
             <Route path="/" element={<Home/>} />
@@ -38,4 +39,4 @@ function App() {
   )
 }
 
-export { App, LOCAL_STORAGE_KEY };
+export { App, LOCAL_STORAGE_KEY, FontAwesomeIcon, faMagnifyingGlass, faStar, faCirclePlus, faCircleMinus, faFilm };

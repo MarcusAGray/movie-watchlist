@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 60px;
+
+  background: linear-gradient( rgba(0, 0, 0, 0.8), 
+                              rgba(0, 0, 0, 0.8) ), 
+                              url("../public/header-background2.jpg");
+
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+  padding: 0 50px 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+
+h1 {
+  font-size: 4rem;
+  color: white;
+  filter: brightness(1000);
+}
+
+.search-container {
+  width: 400px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: white;
+
+  font-size: 1.1rem;
+
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+  margin-top: -75px;
+  margin-bottom: 45px;
+ 
+  border: 1px solid grey;
+
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.search-container input {
+  all: unset;
+  width: 75%;
+  height: 100%;
+  border: none;
+  padding-left: 20px;
+}
+
+.search-container input:focus::placeholder {
+  color: transparent;
+}
+
+.search-container button {
+  width: 15%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  border-left: 1px solid grey;
+  float: right;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.search-icon {
+  color: grey;
+  opacity: 80%;
+}
+
+main {
+  position: absolute;
+  top: 400px;
+  width: 100%;
+  padding: 0 17%;
+}
+
+.search-page {
+  width: 140px;
+  margin: 0 auto;
+  color: grey;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.start-page {
+  margin-top: 10px;
+}
+
+.film-icon {
+  width: 100px;
+  height: 100px;
+  opacity: 40%;
+}
+
+.no-movies-page {
+  width: 300px;
+  opacity: 50%;
+}
+
+.empty-watchlist-page {
+  width: 300px;
+  margin: 0 auto;
+  color: grey;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
