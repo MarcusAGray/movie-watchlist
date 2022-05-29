@@ -10,10 +10,6 @@
   width: 200px;
 }
 
-.movie-display h3 {
-  font-size: 1.75em;
-}
-
 .movie-info-container {
   padding: 30px 50px;
 }
@@ -27,7 +23,8 @@
   align-items:flex-start;
 }
 
-.movie-info-heading * {
+.movie-info-heading h3 {
+  font-size: 1.75rem;
   margin-right: 10px;
 }
 
@@ -67,5 +64,5 @@
 .movie-des {
   color: grey;
   width: 400px;
-  font-size: 1.1em;
+  font-size: 1.1rem;
 }

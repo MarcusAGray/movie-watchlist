@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react'
-import { SavedMoviesContext, FontAwesomeIcon, faStar} from './App'
+import { SavedMoviesContext, isMovieSaved, FontAwesomeIcon, faStar} from './App'
 import './movie.css';
 
 function Movie(props) {
@@ -8,7 +8,8 @@ function Movie(props) {
   const [savedMovies, setSavedMovies] = useContext(SavedMoviesContext)
 
   function getMovieData() {
-    if (savedMovies.some(movie => movie.imdbID == props.id) ) {
+    // Searches savedMovies for movie data before trying to fetch it
+    if (isMovieSaved(savedMovies, props.id) ) {
       const movieObj = savedMovies.find(movie => movie.imdbID == props.id)
       setMovieData(movieObj)
     } else {

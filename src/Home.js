@@ -1,12 +1,20 @@
 import React, { useState, useContext } from 'react'
-import { LOCAL_STORAGE_KEY, SavedMoviesContext, FontAwesomeIcon, faMagnifyingGlass, faFilm, faCirclePlus } from './App'
 import './index.css';
-import Movie from './Movie'
 import Header from './Header'
+import Movie from './Movie'
+import { LOCAL_STORAGE_KEY,
+        isMovieSaved, 
+        SavedMoviesContext, 
+        FontAwesomeIcon, 
+        faMagnifyingGlass, 
+        faFilm, 
+        faCirclePlus } from './App'
 
 function Home() {
 
+  //controls initial render on the page before a search is made 
   const [searchMade, setSearchMade] = useState(false)
+
   const [isLoading, setIsLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [movieIds, setMovieIds] = useState([])
@@ -38,16 +46,10 @@ function Home() {
         console.error("ERROR :", err)
       })
   }
-
-  function isMovieSaved(id) {
-    return savedMovies.some(movie => movie.imdbID == id)
-  }
   
   const saveMovie = movieData => {
-    if(isMovieSaved(movieData.imdbID)) {
-      console.log("movie already saved")
-      return
-    }
+    if(isMovieSaved(savedMovies, movieData.imdbID)) return
+    
     const newMovies = savedMovies
     newMovies.push(movieData)
     setSavedMovies(newMovies)
@@ -71,7 +73,6 @@ function Home() {
     <p>Loading...</p>
   </div>
   
-
   return (
     <div>
       <Header title="Find your film" link="/watchlist" text="My Watchlist"/>
@@ -94,15 +95,14 @@ function Home() {
           (!searchMade && openingSearchPage) ||
           (noMoviesFound && noMoviesFoundPage) ||
           (isLoading && loadingPage) ||
-          ((movieIds.length == 0) && <p>No remaining movies</p>) ||
           (movieIds.map(movieId => {
             return (
               <Movie
                 key={movieId}
                 id={movieId}
                 action={saveMovie}
-                actionText = {isMovieSaved(movieId) ? "Movie Saved" : "Add to watchlist"}
-                symbol={!isMovieSaved(movieId) ? <FontAwesomeIcon className='button-symbol' icon={faCirclePlus} /> : null}
+                actionText = {isMovieSaved(savedMovies, movieId) ? "Movie Saved" : "Add to watchlist"}
+                symbol={!isMovieSaved(savedMovies, movieId) ? <FontAwesomeIcon className='button-symbol' icon={faCirclePlus} /> : null}
               />
             )
           }))

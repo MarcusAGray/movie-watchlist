@@ -8,6 +8,10 @@
   width: 100%;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .header {
   width: 100%;
   height: 300px;
@@ -42,25 +46,23 @@ h1 {
   filter: brightness(1000);
 }
 
+
+/* SEARCH BOX */
+
 .search-container {
   width: 400px;
   height: 40px;
   margin: 0 auto;
   background-color: white;
 
+  margin-top: -78px;
+  margin-bottom: 45px;
+  
   font-size: 1.1rem;
 
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-
-  margin-top: -75px;
-  margin-bottom: 45px;
- 
   border: 1px solid grey;
-
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
@@ -86,14 +88,13 @@ h1 {
   float: right;
 }
 
-button:hover {
-  cursor: pointer;
-}
-
 .search-icon {
   color: grey;
   opacity: 80%;
 }
+
+
+/* MAIN PAGE */
 
 main {
   position: absolute;
@@ -101,6 +102,8 @@ main {
   width: 100%;
   padding: 0 17%;
 }
+
+/* SEARCH PAGE */
 
 .search-page {
   width: 140px;
@@ -125,6 +128,9 @@ main {
   width: 300px;
   opacity: 50%;
 }
+
+
+/* WATCHLIST PAGE */
 
 .empty-watchlist-page {
   width: 300px;

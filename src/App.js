@@ -1,20 +1,30 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import './index.css';
 import Home from './Home'
 import Watchlist from './Watchlist'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilm, 
+        faMagnifyingGlass, 
+        faStar, 
+        faCirclePlus, 
+        faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilm, faMagnifyingGlass, faStar, faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 
-export const SavedMoviesContext = createContext();
+const SavedMoviesContext = createContext();
 const LOCAL_STORAGE_KEY = 'savedMovies'
 
-function App() {
+const isMovieSaved = (movies, movieId) => {
+  return movies.some(movie => movie.imdbID == movieId)
+}
 
+function App() {
+  
   const [savedMovies, setSavedMovies] = useState([])
 
   useEffect(() => {
@@ -39,4 +49,14 @@ function App() {
   )
 }
 
-export { App, LOCAL_STORAGE_KEY, FontAwesomeIcon, faMagnifyingGlass, faStar, faCirclePlus, faCircleMinus, faFilm };
+
+export { App,
+        SavedMoviesContext, 
+        isMovieSaved,
+        LOCAL_STORAGE_KEY, 
+        FontAwesomeIcon, 
+        faMagnifyingGlass, 
+        faStar, 
+        faCirclePlus, 
+        faCircleMinus, 
+        faFilm };

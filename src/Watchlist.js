@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
-import { LOCAL_STORAGE_KEY, SavedMoviesContext } from './App'
+import { LOCAL_STORAGE_KEY, SavedMoviesContext, FontAwesomeIcon, faCircleMinus } from './App'
 import Movie from './Movie'
 import Header from './Header'
-
-import { FontAwesomeIcon, faCircleMinus } from './App'
 
 function Watchlist() {
 
@@ -35,7 +33,7 @@ function Watchlist() {
               id={movie.imdbID}
               action={remove}
               actionText="Remove"
-              symbol = {<FontAwesomeIcon className='button-symbol' icon={faCircleMinus} />}
+              symbol={<FontAwesomeIcon className='button-symbol' icon={faCircleMinus} />}
             />
           )
         })}
