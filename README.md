@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+<h1>Movie Watchlist</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React app that lets a user search and save movies in a watchlist. 
 
-## Available Scripts
+<img src="https://user-images.githubusercontent.com/17533749/174473183-e5ce96bd-ef49-4c23-a0b3-1e95e0293a53.png" width="500">
 
-In the project directory, you can run:
 
-### `npm start`
+<h2>Overview</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A user can search for movies using the <a href=" https://www.omdbapi.com/">OMDb API</a>. They can add a movie of their choice to their watchlist, which is saved in local storage. A user can also remove movies from their watchlist.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<h2>Approach taken</h2>
+For a search to occur and a movie's data to be displayed (rating, genre, etc) two api calls are needed. One to search and, having retrieved a list of movie IDs, a call for a movie's data using its ID. 
+<br><br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://user-images.githubusercontent.com/17533749/174473225-cdbd12dc-8695-440b-b310-39888a48c07d.png" width="600">
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A React component is created for each movie ID found, and each component makes an api call for the data of its corresponding movie.
+The search function is configured in such a way that the program will check for movies already stored in local Storage before making the api call for that movie's data. This is an attempt to limit the number of api calls made and reduce the chance of encountering a server error.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://user-images.githubusercontent.com/17533749/174474258-6b59d439-8046-4e5b-a939-90441eaa8fc0.png" width="800">
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2>Scripts</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To install all dependencies;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+In the project directory, you can run;
 
-## Learn More
+### npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Runs the app in the development mode.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
